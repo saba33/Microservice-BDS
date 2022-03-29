@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "0vWk5LFRjLwGZWgRXL2WFkp0xU+pH3OgzaNj5eHlpN0=",
+  "Source": "SMSSenderManagement.API",
+  "BasePath": "_content/SMSSenderManagement.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

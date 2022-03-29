@@ -1,0 +1,12 @@
+C:\Users\user\source\repos\SMSsenderMicroservice\SMSSender.Microservice.API\SMSSenderManagement.Domain\bin\Debug\net6.0\SMSSenderManagement.Domain.deps.json
+C:\Users\user\source\repos\SMSsenderMicroservice\SMSSender.Microservice.API\SMSSenderManagement.Domain\bin\Debug\net6.0\SMSSenderManagement.Domain.dll
+C:\Users\user\source\repos\SMSsenderMicroservice\SMSSender.Microservice.API\SMSSenderManagement.Domain\bin\Debug\net6.0\SMSSenderManagement.Domain.pdb
+C:\Users\user\source\repos\SMSsenderMicroservice\SMSSender.Microservice.API\SMSSenderManagement.Domain\obj\Debug\net6.0\SMSSenderManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\SMSsenderMicroservice\SMSSender.Microservice.API\SMSSenderManagement.Domain\obj\Debug\net6.0\SMSSenderManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\SMSsenderMicroservice\SMSSender.Microservice.API\SMSSenderManagement.Domain\obj\Debug\net6.0\SMSSenderManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\SMSsenderMicroservice\SMSSender.Microservice.API\SMSSenderManagement.Domain\obj\Debug\net6.0\SMSSenderManagement.Domain.AssemblyInfo.cs
+C:\Users\user\source\repos\SMSsenderMicroservice\SMSSender.Microservice.API\SMSSenderManagement.Domain\obj\Debug\net6.0\SMSSenderManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\SMSsenderMicroservice\SMSSender.Microservice.API\SMSSenderManagement.Domain\obj\Debug\net6.0\SMSSenderManagement.Domain.dll
+C:\Users\user\source\repos\SMSsenderMicroservice\SMSSender.Microservice.API\SMSSenderManagement.Domain\obj\Debug\net6.0\refint\SMSSenderManagement.Domain.dll
+C:\Users\user\source\repos\SMSsenderMicroservice\SMSSender.Microservice.API\SMSSenderManagement.Domain\obj\Debug\net6.0\SMSSenderManagement.Domain.pdb
+C:\Users\user\source\repos\SMSsenderMicroservice\SMSSender.Microservice.API\SMSSenderManagement.Domain\obj\Debug\net6.0\ref\SMSSenderManagement.Domain.dll
