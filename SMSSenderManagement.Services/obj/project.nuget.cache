@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KBm+nlLm9JhYoc20fFCwdr5io+aONFLhvWLvek488PnB/oNzfvdcbnygSA8dVE9DbLt1uxA6aaAlv+LgYW6Rww==",
+  "dgSpecHash": "yV4GuwmB1hQgWXJhGZwRSFRq4jgWDvSlfiPSGREDB/j2EToThGlAWkqMIzIA9zJfXLOkkwsZh0s2RTnfVSGO0w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\source\\repos\\SMSsenderMicroservice\\SMSSender.Microservice.API\\SMSSenderManagement.Services\\SMSSenderManagement.Services.csproj",
+  "projectFilePath": "C:\\Users\\user\\Documents\\GitHub\\Microservice-BDS\\SMSSenderManagement.Services\\SMSSenderManagement.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

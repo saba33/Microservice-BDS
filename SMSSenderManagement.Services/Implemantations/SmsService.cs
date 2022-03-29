@@ -40,7 +40,7 @@ namespace SMSSenderManagement.Services.Implemantations
             smsModelToInsert.sender = _sender;
             smsModelToInsert.text = $"Hello, your otp is {otp}";
             smsModelToInsert.receivers = sentRequest.receivers;
-            
+
             SmsSentHistoryWithotp otpValidationModel = new SmsSentHistoryWithotp();
             otpValidationModel.Otp = otp;
             otpValidationModel.Id = Guid.NewGuid();
@@ -67,7 +67,7 @@ namespace SMSSenderManagement.Services.Implemantations
             var otp = GenerateOtp();
             SentSmsRequestWithSender smsModelToInsert = new SentSmsRequestWithSender();
             smsModelToInsert.sender = _sender;
-            smsModelToInsert.text = smsModelToInsert.text + otp;
+            smsModelToInsert.text = smsModelToInsert.text + otp.ToString();
             smsModelToInsert.receivers = otpSentRequestModel.receivers;
             var json = JsonConvert.SerializeObject(smsModelToInsert);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
@@ -83,13 +83,11 @@ namespace SMSSenderManagement.Services.Implemantations
             sentRequest.Id = Guid.NewGuid();
             sentRequest.CreatedOn = DateTime.Now;
             sentRequest.ValidateOn = DateTime.Now;
-            sentRequest.PhoneNumbers = smsModelToInsert.receivers;
-            sentRequest.Text = String.Format(smsModelToInsert.text, otp);
-            //sentRequest.SmsProvider =message.Split(new string[] { "id\":" }, StringSplitOptions.None).Last();
-            // string toBeSearched = "id\":";
+            sentRequest.PhoneNumber = smsModelToInsert.receivers.FirstOrDefault();
+            sentRequest.Text = String.Format(smsModelToInsert.text + otp);
             sentRequest.SmsProvider = FormatString(message);
-
-             await _repo.AddAsync(sentRequest);
+            message = FormatString(message);
+            await _repo.AddAsync(sentRequest);
             return message;
         }
         #region public members
@@ -105,23 +103,17 @@ namespace SMSSenderManagement.Services.Implemantations
             return data;
         }
 
-      
+
         #endregion
         #endregion
 
         string FormatString(string text)
         {
-         
-            string toBeSearched = "id\":";
-            int ix = text.IndexOf(toBeSearched);
-
-            text  = text.Substring(ix + 2 + toBeSearched.Length - 2);
-            List<char> charsToRemove = new List<char>() { '"', '/', '@', '}','{' };
-            foreach (char c in charsToRemove)
-            {
-                text = text.Replace(c.ToString(), String.Empty);
-            }
-            return text;
+            string myString = text;
+            int startIndex = myString.Length - 42;
+            int endIndex = myString.Length - startIndex - 2;
+            string id = myString.Substring(startIndex , endIndex);
+            return id;
         }
 
     }

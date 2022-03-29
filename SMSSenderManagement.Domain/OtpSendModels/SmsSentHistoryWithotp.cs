@@ -13,7 +13,7 @@ namespace SMSSenderManagement.Domain
         public string Otp { get; set; }
         public DateTime CreatedOn { get; set; }
         public string SmsProvider { get; set; }
-        public string[] PhoneNumbers { get; set; }
+        public string PhoneNumber { get; set; }
         public DateTime ValidateOn { get; set; }
         public string Text { get; set; }
 
