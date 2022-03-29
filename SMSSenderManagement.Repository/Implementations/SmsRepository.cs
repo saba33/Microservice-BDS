@@ -20,6 +20,7 @@ namespace SMSSenderManagement.Repository.Implementations
 
         public async Task AddAsync(SmsSentHistoryWithotp sender)
         {
+
             await _repository.AddAsync(sender);
         }
 
@@ -36,7 +37,7 @@ namespace SMSSenderManagement.Repository.Implementations
 
         public async Task<bool> GetAsync(Guid id, string otp)
         {
-            return await _repository.GetAsync(id, otp);
+            return  await _repository.GetAsync(id, otp);
         }
     }
 }

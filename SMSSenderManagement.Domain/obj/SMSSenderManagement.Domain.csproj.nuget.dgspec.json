@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\source\\repos\\SMSsenderMicroservice\\SMSSender.Microservice.API\\SMSSenderManagement.Domain\\SMSSenderManagement.Domain.csproj": {}
+    "C:\\Users\\user\\Documents\\GitHub\\Microservice-BDS\\SMSSenderManagement.Domain\\SMSSenderManagement.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\source\\repos\\SMSsenderMicroservice\\SMSSender.Microservice.API\\SMSSenderManagement.Domain\\SMSSenderManagement.Domain.csproj": {
+    "C:\\Users\\user\\Documents\\GitHub\\Microservice-BDS\\SMSSenderManagement.Domain\\SMSSenderManagement.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\source\\repos\\SMSsenderMicroservice\\SMSSender.Microservice.API\\SMSSenderManagement.Domain\\SMSSenderManagement.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\Microservice-BDS\\SMSSenderManagement.Domain\\SMSSenderManagement.Domain.csproj",
         "projectName": "SMSSenderManagement.Domain",
-        "projectPath": "C:\\Users\\user\\source\\repos\\SMSsenderMicroservice\\SMSSender.Microservice.API\\SMSSenderManagement.Domain\\SMSSenderManagement.Domain.csproj",
+        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\Microservice-BDS\\SMSSenderManagement.Domain\\SMSSenderManagement.Domain.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\source\\repos\\SMSsenderMicroservice\\SMSSender.Microservice.API\\SMSSenderManagement.Domain\\obj\\",
+        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\Microservice-BDS\\SMSSenderManagement.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",

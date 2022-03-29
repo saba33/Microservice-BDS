@@ -17,7 +17,7 @@ namespace SMSSenderManagement.Repository.SmsManagementContect
 
 
         public DbSet<SmsSentHistoryWithotp> OtpAndIds { get; set; }
-        public DbSet<SmsSentRequest> SentSmses { get; set; }
+        //public DbSet<SmsSentRequest> SentSmses { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TWSqACe5Bc/v8GZOyGTV3Edh/jmkOor5pbQxtPxoJHt/xtn6L3Nep1Bi8qMCPcsKJamvkl0P5Q/Djcw0+D/y3Q==",
+  "dgSpecHash": "sktj9Gi5DRDkR3zXRxx1w6VMbAZE+Puaed9o47gOBBanmXyBwILRi9d6sk/ZPGbagOdRUvLpO5dsf8IYFs4oIQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\source\\repos\\SMSsenderMicroservice\\SMSSender.Microservice.API\\SMSSenderManagement.Domain\\SMSSenderManagement.Domain.csproj",
+  "projectFilePath": "C:\\Users\\user\\Documents\\GitHub\\Microservice-BDS\\SMSSenderManagement.Domain\\SMSSenderManagement.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",

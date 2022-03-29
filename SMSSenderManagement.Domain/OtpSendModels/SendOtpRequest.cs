@@ -11,7 +11,7 @@ namespace SMSSenderManagement.Domain.Requests
         public string[] receivers { get; set; }
         //public string sender { get; set; }
 
-        //public string text { get; set; }
+        public string text { get; set; }
 
     }
 }
