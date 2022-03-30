@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SMSSenderManagement.Domain;
 using SMSSenderManagement.Domain.Requests;
 using SMSSenderManagement.Services.Abstractions;
 
@@ -29,7 +30,7 @@ namespace SMSSenderManagement.API.Controllers
 
 
         //[HttpPost]
-        //public async Task<IActionResult> SentSms(SentSmsRequest smsModel)
+        //public async Task<IActionResult> SentSms(SmsSentRequest smsModel)
         //{
         //    var result = await _smsService.SendSms(smsModel);
         //    if (result == false)
@@ -38,24 +39,69 @@ namespace SMSSenderManagement.API.Controllers
         //        return Ok(result);
         //}
 
-        [HttpPost]
+        [HttpPost("/SendOtp")]
         public async Task<IActionResult> SentOpt(SendOtpRequest otpModelRequest)
+        {
+            string result;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    result = await _smsService.SendOtp(otpModelRequest);
+                    return Ok(result);
+                }
+                catch (Exception e)
+                {
+                    return BadRequest(e.Message);
+                }
+            }
+
+            return BadRequest("Modelstate is not valid");
+        }
+
+
+        [HttpPost("ValidateOtp")]
+        public async Task<IActionResult> ValidateOtp(ValidateOtpRequest request)
         {
             if(ModelState.IsValid)
             {
                 try
                 {
-                    await _smsService.SendOtp(otpModelRequest);
+                    var result =  await _smsService.ValidateOtp(request);
+                    if(result != true)
+                        return Ok(result);
+                    return Ok(result);
                 }
                 catch (Exception e)
                 {
-                     return BadRequest(e.Message);
+                    throw new Exception();
                 }
             }
-            return Ok();
+            return BadRequest();
+        }
+
+        [HttpPost("/SendSms")]
+        public async Task<IActionResult> SentSms(SmsSentRequest request)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var result = await _smsService.SendSms(request);
+                    if (result != true)
+                        return Ok(result);
+                    return Ok(result);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception();
+                }
+            }
+            return BadRequest();
         }
 
     }
+
 
     //send otp
     //db - Id - guid, PhoneNumber, Text, Otp, CreatedOn = datetime.now, ValidateOn = datetime.now, smsprovider id
@@ -77,7 +123,7 @@ namespace SMSSenderManagement.API.Controllers
     //{
     //    public Guid SessionId { get; set; }
 
-    //    public string Otp { get; set; }
+    //    public string OtBoop { get; set; }
     //}
 
 
@@ -90,4 +136,5 @@ namespace SMSSenderManagement.API.Controllers
 
     //    public string SmsText { get; set; }
     //}
+
 }

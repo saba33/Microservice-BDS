@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SMSSenderManagement.Repository.SmsManagementContect;
 
@@ -11,9 +12,10 @@ using SMSSenderManagement.Repository.SmsManagementContect;
 namespace SMSSenderManagement.Repository.Migrations
 {
     [DbContext(typeof(SMSManagementContext))]
-    partial class SMSManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20220330150114_UpdatedintToGuid")]
+    partial class UpdatedintToGuid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,10 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SMSSenderManagement.Domain;
+using SMSSenderManagement.Domain.Requests;
 using SMSSenderManagement.Repository.SmsManagementContect;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace SMSSenderManagement.Repository
 {
@@ -36,6 +40,14 @@ namespace SMSSenderManagement.Repository
             return await _dbSet.ToListAsync();
         }
 
+        public async Task<bool> GetAsyncBySessionid(T request)
+        {
+            var result = await _dbSet.ToListAsync();
+            
+            if (result != null) return true;
+            return false;
+        }
+        
         public async Task<bool> GetAsync(Guid Id, string Number)
         {
             var result = await _context.FindAsync(typeof(EntityState),Id);

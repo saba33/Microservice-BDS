@@ -33,33 +33,36 @@ namespace SMSSenderManagement.Services.Implemantations
         #endregion
 
         #region public members
-        public async Task<bool> SendSms(SentSmsRequest sentRequest)
+
+
+        public async Task<bool> SendSms(SmsSentRequest sentRequest)
         {
-            var otp = GenerateOtp();
-            SentSmsRequestWithSender smsModelToInsert = new SentSmsRequestWithSender();
-            smsModelToInsert.sender = _sender;
-            smsModelToInsert.text = $"Hello, your otp is {otp}";
-            smsModelToInsert.receivers = sentRequest.receivers;
-
-            SmsSentHistoryWithotp otpValidationModel = new SmsSentHistoryWithotp();
-            otpValidationModel.Otp = otp;
-            otpValidationModel.Id = Guid.NewGuid();
-
-            var json = JsonConvert.SerializeObject(smsModelToInsert);
-            var data = new StringContent(json, Encoding.UTF8, "application/json");
+        
+            var numbers = sentRequest.receivers.ToList();
             using (var client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("Authorization", _apiKey);
-                var response = await client.PostAsync(_url, data);
-                var message = await response.Content.ReadAsStringAsync();
-
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    await _repo.AddAsync(otpValidationModel);
-                    return true;
+                        var model = new SentSmsRequestWithSender() { receivers = sentRequest.receivers , sender = _sender, text = sentRequest.text};
+                        client.DefaultRequestHeaders.Add("Authorization", _apiKey);
+                        var jsonModel = JsonConvert.SerializeObject(model);
+                        var dataModel = new StringContent(jsonModel, Encoding.UTF8, "application/json");
+                        var responseModel = await client.PostAsync(_url, dataModel);
+
+                    foreach (var number in numbers)
+                    {
+                        MessagesInfo info = new MessagesInfo() { Id = Guid.NewGuid(), PhoneNumber = number, Text = sentRequest.text , CreateOn = DateTime.Now};
+                        await _repo.AddAsync(info);
+                    }
+                }
+                catch (Exception)
+                {
+
+                    return false;
                 }
             }
-            return await Task.FromResult(false);
+
+            return await Task.FromResult(true);
         }
 
         public async Task<string> SendOtp(SendOtpRequest otpSentRequestModel)
@@ -67,16 +70,16 @@ namespace SMSSenderManagement.Services.Implemantations
             var otp = GenerateOtp();
             SentSmsRequestWithSender smsModelToInsert = new SentSmsRequestWithSender();
             smsModelToInsert.sender = _sender;
-            smsModelToInsert.text = smsModelToInsert.text + otp.ToString();
+            smsModelToInsert.text = otpSentRequestModel.text + otp.ToString();
             smsModelToInsert.receivers = otpSentRequestModel.receivers;
             var json = JsonConvert.SerializeObject(smsModelToInsert);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
-            string message;
+            string sessionId;
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("Authorization", _apiKey);
                 var response = await client.PostAsync(_url, data);
-                message = await response.Content.ReadAsStringAsync();
+                sessionId = await response.Content.ReadAsStringAsync();
             }
             SmsSentHistoryWithotp sentRequest = new SmsSentHistoryWithotp();
             sentRequest.Otp = otp;
@@ -84,13 +87,24 @@ namespace SMSSenderManagement.Services.Implemantations
             sentRequest.CreatedOn = DateTime.Now;
             sentRequest.ValidateOn = DateTime.Now;
             sentRequest.PhoneNumber = smsModelToInsert.receivers.FirstOrDefault();
-            sentRequest.Text = String.Format(smsModelToInsert.text + otp);
-            sentRequest.SmsProvider = FormatString(message);
-            message = FormatString(message);
+            sentRequest.Text = String.Format(smsModelToInsert.text);
+            sentRequest.SmsProvider = FormatString(sessionId);
+            sessionId = FormatString(sessionId);
             await _repo.AddAsync(sentRequest);
-            return message;
+            return sessionId;
+            //return Guid.Parse(sessionId);
         }
-        #region public members
+
+        public async Task<bool> ValidateOtp(ValidateOtpRequest request)
+        {
+            return await _repo.GetAsyncWithSessionId(request);
+        }
+
+
+        #endregion
+        #region Additional public functions
+
+
         string GenerateOtp()
         {
             Random rnd = new Random();
@@ -103,18 +117,19 @@ namespace SMSSenderManagement.Services.Implemantations
             return data;
         }
 
-
-        #endregion
-        #endregion
-
         string FormatString(string text)
         {
             string myString = text;
             int startIndex = myString.Length - 42;
             int endIndex = myString.Length - startIndex - 2;
-            string id = myString.Substring(startIndex , endIndex);
+            string id = myString.Substring(startIndex, endIndex);
             return id;
         }
+
+       
+        #endregion
+
+
 
     }
 }

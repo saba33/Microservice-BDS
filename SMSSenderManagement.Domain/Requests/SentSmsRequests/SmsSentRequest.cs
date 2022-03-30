@@ -8,8 +8,9 @@ namespace SMSSenderManagement.Domain
 {
     public class SmsSentRequest
     {
-        public string[] PhoneNumbers { get; set; }
+        
+        public string[] receivers { get; set; }
 
-        public string SmsText { get; set; }
+        public string text { get; set; }
     }
 }
