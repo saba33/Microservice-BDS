@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SMSSenderManagement.Repository.SmsManagementContect;
 
@@ -11,9 +12,10 @@ using SMSSenderManagement.Repository.SmsManagementContect;
 namespace SMSSenderManagement.Repository.Migrations
 {
     [DbContext(typeof(SMSManagementContext))]
-    partial class SMSManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20220330132459_AddedMessagesTable")]
+    partial class AddedMessagesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,9 +26,11 @@ namespace SMSSenderManagement.Repository.Migrations
 
             modelBuilder.Entity("SMSSenderManagement.Domain.MessagesInfo", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("CreateOn")
                         .HasColumnType("datetime2");

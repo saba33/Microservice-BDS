@@ -12,7 +12,12 @@ namespace SMSSenderManagement.Repository.Abstractions
     {
         Task<bool> Exists(Guid id, string otp);
         Task AddAsync(SmsSentHistoryWithotp request);
+        Task AddAsync(MessagesInfo request);
         Task<List<SmsSentHistoryWithotp>> GetAllAsync();
         Task<bool> GetAsync(Guid id, string otp);
+        Task<bool> GetAsyncWithSessionId(ValidateOtpRequest request);
+        IQueryable<SmsSentHistoryWithotp> Table { get; }
+        IQueryable<MessagesInfo> MessagesTable { get; }
+        
     }
 }

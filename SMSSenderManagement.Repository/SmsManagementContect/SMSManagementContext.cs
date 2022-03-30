@@ -17,12 +17,13 @@ namespace SMSSenderManagement.Repository.SmsManagementContect
 
 
         public DbSet<SmsSentHistoryWithotp> OtpAndIds { get; set; }
-        //public DbSet<SmsSentRequest> SentSmses { get; set; }
+        public DbSet<MessagesInfo> MessagesTable { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<SmsSentHistoryWithotp>().HasKey(x => x.Id);
+            modelBuilder.Entity<MessagesInfo>().HasKey(x => x.Id);
         }
 
     }
