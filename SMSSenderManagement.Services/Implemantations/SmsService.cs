@@ -41,7 +41,7 @@ namespace SMSSenderManagement.Services.Implemantations
             var numbers = sentRequest.receivers.ToList();
             using (var client = new HttpClient())
             {
-                try
+                try 
                 {
                         var model = new SentSmsRequestWithSender() { receivers = sentRequest.receivers , sender = _sender, text = sentRequest.text};
                         client.DefaultRequestHeaders.Add("Authorization", _apiKey);
@@ -102,6 +102,7 @@ namespace SMSSenderManagement.Services.Implemantations
 
 
         #endregion
+
         #region Additional public functions
 
 
@@ -128,8 +129,6 @@ namespace SMSSenderManagement.Services.Implemantations
 
        
         #endregion
-
-
 
     }
 }

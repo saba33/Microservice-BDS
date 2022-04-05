@@ -18,26 +18,7 @@ namespace SMSSenderManagement.API.Controllers
         }
         #endregion
 
-        //public async Task<IActionResult> SendOtp()
-        //{
-        //    return Ok();
-        //}
-
-        //public async Task<IActionResult> ValidateOtp()
-        //{
-        //    return Ok();
-        //}
-
-
-        //[HttpPost]
-        //public async Task<IActionResult> SentSms(SmsSentRequest smsModel)
-        //{
-        //    var result = await _smsService.SendSms(smsModel);
-        //    if (result == false)
-        //        return BadRequest("Request is not Valid please check and try again");
-        //    else
-        //        return Ok(result);
-        //}
+  
 
         [HttpPost("/SendOtp")]
         public async Task<IActionResult> SentOpt(SendOtpRequest otpModelRequest)
@@ -101,40 +82,5 @@ namespace SMSSenderManagement.API.Controllers
         }
 
     }
-
-
-    //send otp
-    //db - Id - guid, PhoneNumber, Text, Otp, CreatedOn = datetime.now, ValidateOn = datetime.now, smsprovider id
-    //public class SendOtpRequest
-    //{
-    //    public string PhoneNumber { get; set; }
-
-    //    public string SmsFormat { get; set; }
-    //}
-
-    //public class SendOtpResponse
-    //{
-    //    public Guid SessionId { get; set; }
-    //}
-
-    ////validate otp
-
-    //public class ValidateOtpRequest
-    //{
-    //    public Guid SessionId { get; set; }
-
-    //    public string OtBoop { get; set; }
-    //}
-
-
-    ////send sms
-
-    ////Id, PhoneNumber, Text, CreateOn
-    //public class SendSmsRequest1
-    //{
-    //    public string[] PhoneNumbers { get; set; }
-
-    //    public string SmsText { get; set; }
-    //}
 
 }
